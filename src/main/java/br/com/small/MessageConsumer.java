@@ -18,7 +18,7 @@
         @Incoming("set_data_queue")
         public void consume(String message) {
             System.out.println(">> Mensagem recebida do RabbitMQ: " + message);
-            Document document = new Document().append("value", message);
+            Document document = new Document().parse(message);
 
             getCollection().insertOne(document);
         }
